@@ -7,10 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import org.mariuszgromada.math.mxparser.*;
 import org.w3c.dom.Text;
-
 import java.util.Scanner;
-
-import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,84 +78,84 @@ public class MainActivity extends AppCompatActivity {
         int id = view.getId();
         switch (view.getId()) {
             case R.id.multiply:
-                Log.i("Id of Button pressed", "multiply");
+                //Log.i("Id of Button pressed", "multiply");
                 eq = tv.getText().toString();
                 // this "x" symbol can not be written on blank screen
                 if(!eq.isEmpty())
                     makeEqHelper("x" , tv);
                 break;
             case R.id.addition:
-                Log.i("Id of Button pressed", "addition");
+                //Log.i("Id of Button pressed", "addition");
                 makeEqHelper("+", tv);
                 break;
             case R.id.subtract:
-                Log.i("Id of Button pressed", "subtraction");
+                //Log.i("Id of Button pressed", "subtraction");
                 makeEqHelper("-", tv);
                 break;
             case R.id.division:
-                Log.i("Id of Button pressed", "division");
+                //Log.i("Id of Button pressed", "division");
                 eq = tv.getText().toString();
                 // this "/" symbol can not be written on blank screen
                 if(!eq.isEmpty())
                     makeEqHelper("/", tv);
                 break;
             case R.id.percentage:
-                Log.i("Id of Button pressed", "percentage");
+                //Log.i("Id of Button pressed", "percentage");
                 makeEqHelper("%", tv);
                 break;
             case R.id.one:
-                Log.i("Id of Button pressed", "one");
+                //Log.i("Id of Button pressed", "one");
                 makeEqHelper("1", tv);
                 break;
             case R.id.two:
-                Log.i("Id of Button pressed", "two");
+                //Log.i("Id of Button pressed", "two");
                 makeEqHelper("2", tv);
                 break;
             case R.id.three:
-                Log.i("Id of Button pressed", "three");
+                //Log.i("Id of Button pressed", "three");
                 makeEqHelper("3", tv);
                 break;
             case R.id.four:
-                Log.i("Id of Button pressed", "four");
+                //Log.i("Id of Button pressed", "four");
                 makeEqHelper("4", tv);
                 break;
             case R.id.five:
-                Log.i("Id of Button pressed", "five");
+                //Log.i("Id of Button pressed", "five");
                 makeEqHelper("5", tv);
                 break;
             case R.id.six:
-                Log.i("Id of Button pressed", "six");
+                //Log.i("Id of Button pressed", "six");
                 makeEqHelper("6", tv);
                 break;
             case R.id.seven:
-                Log.i("Id of Button pressed", "seven");
+                //Log.i("Id of Button pressed", "seven");
                 makeEqHelper("7", tv);
                 break;
             case R.id.eight:
-                Log.i("Id of Button pressed", "eight");
+                //Log.i("Id of Button pressed", "eight");
                 makeEqHelper("8", tv);
                 break;
             case R.id.nine:
-                Log.i("Id of Button pressed", "nine");
+                //Log.i("Id of Button pressed", "nine");
                 makeEqHelper("9", tv);
                 break;
             case R.id.zero:
-                Log.i("Id of Button pressed", "zero");
+                //Log.i("Id of Button pressed", "zero");
                 makeEqHelper("0", tv);
                 break;
             case R.id.dbZero:
-                Log.i("Id of Button pressed", "dbzero");
+                //Log.i("Id of Button pressed", "dbzero");
                 makeEqHelper("00", tv);
                 break;
             case R.id.clearScreen:
-                Log.i("Id of Button pressed", "clearScreen");
+                //Log.i("Id of Button pressed", "clearScreen");
                 tv = findViewById(R.id.tv_equation);
                 tv.setText("");
                 TextView res = findViewById(R.id.tv_result);
                 res.setText("0");
                 break;
             case R.id.deleteChar:
-                Log.i("Id of Button pressed", "addition");
+                //Log.i("Id of Button pressed", "addition");
                 tv = findViewById(R.id.tv_equation);
                 eq = tv.getText().toString();
                 // deleting last character of string
@@ -169,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                 eq = null;
                 break;
             case R.id.dot:
-                Log.i("Id of Button pressed","dot");
+                //Log.i("Id of Button pressed","dot");
                 if(!isDotFound(tv))
                     makeEqHelper(".", tv);
                 break;
@@ -199,10 +196,10 @@ public class MainActivity extends AppCompatActivity {
     public void calculateEq(){
         TextView tv;
         String eq = null;
-        Log.i("Id of Button pressed", "equal");
+        //Log.i("Id of Button pressed", "equal");
         tv = findViewById(R.id.tv_equation);
         eq = tv.getText().toString();
-        Log.i("equation", eq);
+        //Log.i("equation", eq);
         // replacing "x" with "*"
         eq = eq.replaceAll("x", "\\*");
         if(eq.charAt(eq.length()-1) == '%')
@@ -210,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         else
             eq = eq.replace("%", "/100*");
 
-        Log.i("correct equation", eq);
+        //Log.i("correct equation", eq);
         Expression exp = new Expression(eq);
         String result = String.valueOf(exp.calculate());
         // removing ".0" form last of the answer if answer is an integer
@@ -220,12 +217,11 @@ public class MainActivity extends AppCompatActivity {
                 result = result.substring(0, result.length() - 2);
             }
         }
-        Log.i("result", result);
+        //Log.i("result", result);
         if(result.equals("NaN"))
             result = "Error";
         TextView res = findViewById(R.id.tv_result);
         res.setText(result);
         eq = null;
-
     }
 }
